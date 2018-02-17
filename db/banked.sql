@@ -1,0 +1,23 @@
+DROP TABLE transactions CASCADE;
+DROP TABLE tags CASCADE;
+DROP TABLE merchants CASCADE;
+
+CREATE TABLE tags (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  total_spend FLOAT
+);
+
+CREATE TABLE merchants (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  total_spend FLOAT
+);
+
+CREATE TABLE transactions (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  value FLOAT NOT NULL,
+  tag_id INT REFERENCES tags(id) ON DELETE CASCADE,
+  merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE
+);
