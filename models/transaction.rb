@@ -21,6 +21,20 @@ class Transaction
     @id = transaction["id"].to_i
   end
 
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    tag = SqlRunner.run(sql, values)
+    return Tag.new(tag.first)
+  end
+
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    merchant = SqlRunner.run(sql, values)
+    return Merchant.new(merchant.first)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions"
     values = []
