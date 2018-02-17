@@ -1,11 +1,11 @@
-require_relative( "../models/merchant.rb" )
-require_relative( "../models/tag.rb" )
-require_relative( "../models/transaction.rb" )
+require_relative("../models/merchant.rb")
+require_relative("../models/tag.rb")
+require_relative("../models/transaction.rb")
 require("pry-byebug")
 
-Merchant.delete_all()
-Tag.delete_all()
-Transaction.delete_all()
+# Merchant.delete_all()
+# Tag.delete_all()
+# Transaction.delete_all()
 
 merchant1 = Merchant.new({
   "name" => "Sainsburys",
@@ -52,7 +52,7 @@ tag4.save()
 transaction1 = Transaction.new({
   "description" => "Weekly shop",
   "value" => 72.59,
-  "date" => "14/1/2018"
+  "spend_date" => "01/1/2018",
   "merchant_id" => merchant1.id,
   "tag_id" => tag1.id
 })
@@ -60,7 +60,7 @@ transaction1.save()
 transaction2 = Transaction.new({
   "description" => "Pizza for poker game",
   "value" => 23.99,
-  "date" => "23/1/2018"
+  "spend_date" => "14/01/2018",
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id
 })
@@ -68,7 +68,7 @@ transaction2.save()
 transaction3 = Transaction.new({
   "description" => "Beers while in town",
   "value" => 10,
-  "date" => "24/1/2018"
+  "spend_date" => "23/1/2018",
   "merchant_id" => merchant3.id,
   "tag_id" => tag4.id
 })
@@ -76,7 +76,7 @@ transaction3.save()
 transaction4 = Transaction.new({
   "description" => "My round at the social night",
   "value" => 28.45,
-  "date" => "3/2/2018"
+  "spend_date" => "3/2/18",
   "merchant_id" => merchant4.id,
   "tag_id" => tag4.id
 })
