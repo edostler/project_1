@@ -18,6 +18,13 @@ class Tag
     @id = tag["id"].to_i
   end
 
+  def merchants()
+    sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE transactions.merchant_id = $1;"
+    values = [@id]
+    merchants = SqlRunner.run(sql, values)
+    return merchants.map {|merchant| Merchant.new(merchant)}
+  end
+
   def self.delete_all()
     sql = "DELETE FROM tags"
     values = []
