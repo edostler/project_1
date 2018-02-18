@@ -8,7 +8,7 @@
   <input type="text" name="description" id="description" value="<%= @transaction.description %>"/>
 
   <label for="value">Value: £</label>
-  <input type="number" step="0.01" name="value" id="value" value="<%= @transaction.value %>"/>
+  <input type="number" step="0.01" name="value" id="value" value="<%= "%.2f" % @transaction.value %>"/>
 
   <label for="spend_date">Date:</label>
   <input type="date" name="spend_date" id="spend_date" value="<%= @transaction.spend_date %>"/>

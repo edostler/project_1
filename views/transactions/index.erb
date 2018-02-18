@@ -38,7 +38,7 @@
   <p>------------------------------</p>
   <p>Transaction ID: <%= transaction.id %></p>
   <p>Description: <a href="/banked/transactions/<%= transaction.id %>"><%= transaction.description %></a></p>
-  <p>Value: £<%= transaction.value %></p>
+  <p>Value: £<%= "%.2f" % transaction.value %></p>
   <p>Date: <%= transaction.spend_date %></p>
   <p>Merchant: <%= Merchant.find(transaction.merchant_id).name %></p>
   <p>Tag: <%= Tag.find(transaction.tag_id).name %></p>
