@@ -21,6 +21,12 @@ class Transaction
     @id = transaction["id"].to_i
   end
 
+  def update()
+    sql = "UPDATE transactions SET (description, value, spend_date, merchant_id, tag_id) = ($1, $2, $3, $4, $5) WHERE id = $6"
+    values = [@description, @value, @spend_date, @merchant_id, @tag_id, @id]
+    SqlRunner.run( sql, values )
+  end
+
   def tag()
     sql = "SELECT * FROM tags WHERE id = $1"
     values = [@tag_id]

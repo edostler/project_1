@@ -17,7 +17,7 @@
 
   <p>------------------------------</p>
   <p>Tag ID: <%= tag.id %></p>
-  <p>Name: <%= tag.name %></p>
+  <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
   <p>Total Spend: £<%= tag.total_spend %></p>
 
 <% end %>

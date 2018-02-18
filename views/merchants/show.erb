@@ -1,0 +1,20 @@
+<h1>Merchant Details:</h1>
+
+<p><b>Edit And Update Merchant:</b></p>
+
+<form action="/banked/merchants/<%= @merchant.id %>/edit" method="POST">
+
+  <label for="name">Merchant Name:</label>
+  <input type="text" name="name" id="name" value="<%= @merchant.name %>"/>
+
+  <input type="submit" value="Update Record">
+
+</form>
+
+<p><b>Permanently Delete Merchant:</b></p>
+
+<form action="/banked/merchants/<%= @merchant.id %>/delete" method="POST">
+  <button type="submit">Delete Record</button>
+</form>
+
+<p><b><i>WARNING: this will also delete any associated Transactions.</i></b></p>

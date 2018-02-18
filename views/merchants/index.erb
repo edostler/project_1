@@ -17,7 +17,7 @@
 
   <p>------------------------------</p>
   <p>Merchant ID: <%= merchant.id %></p>
-  <p>Name: <%= merchant.name %></p>
+  <p>Name: <a href="/banked/merchants/<%= merchant.id %>"><%= merchant.name %></a></p>
   <p>Total Spend: £<%= merchant.total_spend %></p>
 
 <% end %>

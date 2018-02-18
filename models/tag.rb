@@ -18,6 +18,12 @@ class Tag
     @id = tag["id"].to_i
   end
 
+  def update()
+    sql = "UPDATE tags SET (name, total_spend) = ($1, $2) WHERE id = $3"
+    values = [@name, @total_spend, @id]
+    SqlRunner.run( sql, values )
+  end
+
   def merchants()
     sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE transactions.merchant_id = $1;"
     values = [@id]
