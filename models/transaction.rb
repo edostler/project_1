@@ -35,6 +35,12 @@ class Transaction
     return Merchant.new(merchant.first)
   end
 
+  def self.sum_values()
+    sql = "SELECT SUM(value) FROM transactions"
+    values = []
+    return SqlRunner.run(sql, values).first[:sum.to_s].to_f
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions"
     values = []
@@ -42,10 +48,10 @@ class Transaction
   end
 
   def self.all()
-      sql = "SELECT * FROM transactions"
-      values = []
-      transaction = SqlRunner.run(sql, values)
-      return transaction.map{|transaction| Transaction.new(transaction)}
+    sql = "SELECT * FROM transactions"
+    values = []
+    transaction = SqlRunner.run(sql, values)
+    return transaction.map{|transaction| Transaction.new(transaction)}
   end
 
   def self.find(id)

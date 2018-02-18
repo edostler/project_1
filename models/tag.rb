@@ -25,6 +25,12 @@ class Tag
     return merchants.map {|merchant| Merchant.new(merchant)}
   end
 
+  def self.sum_tag_values(id)
+    sql = "SELECT SUM(value) FROM transactions WHERE tag_id = $1"
+    values = [id]
+    return SqlRunner.run(sql, values).first[:sum.to_s].to_f
+  end
+
   def self.delete_all()
     sql = "DELETE FROM tags"
     values = []
@@ -32,10 +38,10 @@ class Tag
   end
 
   def self.all()
-      sql = "SELECT * FROM tags"
-      values = []
-      tag = SqlRunner.run(sql, values)
-      return tag.map{|tag| Tag.new(tag)}
+    sql = "SELECT * FROM tags"
+    values = []
+    tag = SqlRunner.run(sql, values)
+    return tag.map{|tag| Tag.new(tag)}
   end
 
   def self.find(id)
