@@ -1,9 +1,23 @@
-<p>All Tags</p>
+<h1>Tags</h1>
+
+<p><b>Add A New Tag:</b></p>
+
+<form action="/banked/tags" method="POST">
+
+  <label for="name">Tag Name:</label>
+  <input type="text" name="name" id="name"/>
+
+  <input type="submit" value="Add Tag">
+
+</form>
+
+<p><b>All Current Tags:</b></p>
 
 <% @tags.each do |tag| %>
 
-<p>Tag ID: <%= tag.id %></p>
-<p>Name: <%= tag.name %></p>
-<p>Total Spend: £<%= tag.total_spend %></p>
+  <p>------------------------------</p>
+  <p>Tag ID: <%= tag.id %></p>
+  <p>Name: <%= tag.name %></p>
+  <p>Total Spend: £<%= tag.total_spend %></p>
 
 <% end %>

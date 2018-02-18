@@ -24,7 +24,15 @@ end
 
 get "/banked/transactions" do
   @transactions = Transaction.all()
+  @merchants = Merchant.all()
+  @tags = Tag.all()
   erb(:"transactions/index")
+end
+
+post "/banked/transactions" do
+  transaction = Transaction.new(params)
+  transaction.save()
+  redirect(to("/banked/transactions"))
 end
 
 get "/banked/merchants" do
@@ -32,7 +40,19 @@ get "/banked/merchants" do
   erb(:"merchants/index")
 end
 
+post "/banked/merchants" do
+  merchant = Merchant.new(params)
+  merchant.save()
+  redirect(to("/banked/merchants"))
+end
+
 get "/banked/tags" do
   @tags = Tag.all()
   erb(:"tags/index")
+end
+
+post "/banked/tags" do
+  tag = Tag.new(params)
+  tag.save()
+  redirect(to("/banked/tags"))
 end

@@ -1,9 +1,23 @@
-<p>All Merchants</p>
+<h1>Merchants</h1>
+
+<p><b>Add A New Merchant:</b></p>
+
+<form action="/banked/merchants" method="POST">
+
+  <label for="name">Merchant Name:</label>
+  <input type="text" name="name" id="name"/>
+
+  <input type="submit" value="Add Merchant">
+
+</form>
+
+<p><b>All Current Merchants:</b></p>
 
 <% @merchants.each do |merchant| %>
 
-<p>Merchant ID: <%= merchant.id %></p>
-<p>Name: <%= merchant.name %></p>
-<p>Total Spend: £<%= merchant.total_spend %></p>
+  <p>------------------------------</p>
+  <p>Merchant ID: <%= merchant.id %></p>
+  <p>Name: <%= merchant.name %></p>
+  <p>Total Spend: £<%= merchant.total_spend %></p>
 
 <% end %>
