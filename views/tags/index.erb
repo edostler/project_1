@@ -1,0 +1,9 @@
+<p>All Tags</p>
+
+<% @tags.each do |tag| %>
+
+<p>Tag ID: <%= tag.id %></p>
+<p>Name: <%= tag.name %></p>
+<p>Total Spend: £<%= tag.total_spend %></p>
+
+<% end %>

@@ -21,3 +21,18 @@ post "/banked" do
   @sum_tag_total = Tag.sum_tag_values(params[:id])
   erb(:"dashboard/index_tag")
 end
+
+get "/banked/transactions" do
+  @transactions = Transaction.all()
+  erb(:"transactions/index")
+end
+
+get "/banked/merchants" do
+  @merchants = Merchant.all()
+  erb(:"merchants/index")
+end
+
+get "/banked/tags" do
+  @tags = Tag.all()
+  erb(:"tags/index")
+end

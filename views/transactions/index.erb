@@ -1,0 +1,12 @@
+<p>All Transactions</p>
+
+<% @transactions.each do |transaction| %>
+
+  <p>Transaction ID: <%= transaction.id %></p>
+  <p>Description: <%= transaction.description %></p>
+  <p>Value: £<%= transaction.value %></p>
+  <p>Date: <%= transaction.spend_date %></p>
+  <p>Merchant ID: <%= transaction.merchant_id %></p>
+  <p>Tag ID: <%= transaction.tag_id %></p>
+
+<% end %>

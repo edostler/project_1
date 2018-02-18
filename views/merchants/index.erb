@@ -1,0 +1,9 @@
+<p>All Merchants</p>
+
+<% @merchants.each do |merchant| %>
+
+<p>Merchant ID: <%= merchant.id %></p>
+<p>Name: <%= merchant.name %></p>
+<p>Total Spend: £<%= merchant.total_spend %></p>
+
+<% end %>
