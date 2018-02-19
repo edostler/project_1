@@ -75,18 +75,18 @@
 
   <label for="value-select"></label>
   <select name="operator" id="value-select">
-      <option value="<">Less than</option>
-      <option value=">">Greater than</option>
+      <option value="less">Less Than</option>
+      <option value="greater">Greater Than</option>
   </select>
 
-  <label for="value">Value:</label>
-  <input type="number" name="value" id="value"/>
+  <label for="value">Value: £</label>
+  <input type="number" name="value" id="value" required/>
 
   <input type="submit" value="Filter By Value">
 
 </form>
 
-<p><b>Previous Transactions Filtered between <%= @start_date_formatted %> and <%= @end_date_formatted %>:</b></p>
+<p><b>Previous Transactions Filtered by Date = <%= @start_date_formatted %> to <%= @end_date_formatted %>:</b></p>
 
 <% @transactions.each do |transaction| %>
 

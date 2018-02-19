@@ -61,8 +61,15 @@ post "/banked/transactions/filter_date" do
 end
 
 post "/banked/transactions/filter_value" do
-  @transactions = Transaction.all()
+  @transactions = Transaction.filter_value(params[:operator], params[:value])
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @operator_value = params[:operator]
+  if @operator_value == "less"
+    @operator_name = "Less than"
+  else
+    @operator_name = "Greater than"
+  end
+  @value = params[:value]
   erb(:"transactions/index_filter_value")
 end

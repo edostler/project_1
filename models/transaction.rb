@@ -100,11 +100,18 @@ class Transaction
     return transaction.map{|transaction| Transaction.new(transaction)}
   end
 
-  def self.filter_value(id)
-    sql = "SELECT * FROM transactions WHERE id = $1"
-    values = [id]
-    transaction = SqlRunner.run(sql, values)
-    return Transaction.new(transaction.first)
+  def self.filter_value(operator, value)
+    if operator == "less"
+      sql = "SELECT * FROM transactions WHERE value < $1"
+      values = [value]
+      transaction = SqlRunner.run(sql, values)
+      return transaction.map{|transaction| Transaction.new(transaction)}
+    else
+      sql = "SELECT * FROM transactions WHERE value > $1"
+      values = [value]
+      transaction = SqlRunner.run(sql, values)
+      return transaction.map{|transaction| Transaction.new(transaction)}
+    end
   end
 
   def self.delete(id)
