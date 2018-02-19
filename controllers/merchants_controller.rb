@@ -26,3 +26,15 @@ post "/banked/merchants/:id/delete" do
   Merchant.delete(params[:id])
   redirect(to("/banked/merchants"))
 end
+
+post "/banked/merchants/filter_value" do
+  @merchants = Merchant.filter_value(params[:operator], params[:value])
+  @operator_value = params[:operator]
+  if @operator_value == "less"
+    @operator_name = "Less than"
+  else
+    @operator_name = "Greater than"
+  end
+  @value = params[:value]
+  erb(:"merchants/index_filter_value")
+end

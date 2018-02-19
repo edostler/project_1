@@ -18,6 +18,8 @@
     <% for merchant in @merchants %>
       <option value="<%= merchant.id %>"><%= merchant.name %></option>
     <% end %>
+    <option value="null" disabled>------</option>
+    <option value="new">NEW MERCHANT</option>
   </select>
 
   <label for="tag-select">Tag:</label>
@@ -25,13 +27,15 @@
     <% for tag in @tags %>
       <option value="<%= tag.id %>"><%= tag.name %></option>
     <% end %>
+    <option value="null" disabled>------</option>
+    <option value="new">NEW TAG</option>
   </select>
 
   <input type="submit" value="Add Transaction">
 
 </form>
 
-<p><b>Filter total sum by Tag, Merchant, Date or Value:</b></p>
+<p><b>Filter Transactions by Tag, Merchant, Date or Value:</b></p>
 
 <form action="/banked/transactions/filter_tag" method="POST">
 

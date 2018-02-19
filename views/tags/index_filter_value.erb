@@ -1,0 +1,25 @@
+<h1>Tags</h1>
+
+<p><b>Add A New Tag:</b></p>
+
+<form action="/banked/tags" method="POST">
+
+  <label for="name">Tag Name:</label>
+  <input type="text" name="name" id="name"/>
+
+  <input type="submit" value="Add Tag">
+
+</form>
+
+<p><b>Filter Tags by Value:</b></p>
+
+<p><b>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
+
+<% @tags.each do |tag| %>
+
+  <p>------------------------------</p>
+  <p>Tag ID: <%= tag.id %></p>
+  <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
+  <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+
+<% end %>

@@ -1,0 +1,19 @@
+<p><b>Add A New Merchant And Tag To Complete Transaction:</b></p>
+
+<form action="/banked/transactions/new_merchant_and_tag" method="POST">
+
+  <label for="name_m">Merchant Name:</label>
+  <input type="text" name="name_m" id="name_m" required/>
+
+  <label for="name_t">Tag Name:</label>
+  <input type="text" name="name_t" id="name_t" required/>
+
+  <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
+
+  <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
+
+  <input type="date" name="spend_date" id="spend_date" value="<%= @spend_date %>" hidden/>
+
+  <input type="submit" value="Complete Transaction">
+
+</form>

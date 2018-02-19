@@ -5,7 +5,7 @@
 <form action="/banked/merchants" method="POST">
 
   <label for="name">Merchant Name:</label>
-  <input type="text" name="name" id="name" required/>
+  <input type="text" name="name" id="name"/>
 
   <input type="submit" value="Add Merchant">
 
@@ -13,22 +13,7 @@
 
 <p><b>Filter Merchants by Value:</b></p>
 
-<form action="/banked/merchants/filter_value" method="POST">
-
-  <label for="value-select"></label>
-  <select name="operator" id="value-select">
-    <option value="less">Less Than</option>
-    <option value="greater">Greater Than</option>
-  </select>
-
-  <label for="value">Value: £</label>
-  <input type="number" name="value" id="value" required/>
-
-  <input type="submit" value="Filter By Value">
-
-</form>
-
-<p><b>All Current Merchants:</b></p>
+<p><b>Current Merchants Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
 
 <% @merchants.each do |merchant| %>
 

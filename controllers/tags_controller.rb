@@ -26,3 +26,15 @@ post "/banked/tags/:id/delete" do
   Tag.delete(params[:id])
   redirect(to("/banked/tags"))
 end
+
+post "/banked/tags/filter_value" do
+  @tags = Tag.filter_value(params[:operator], params[:value])
+  @operator_value = params[:operator]
+  if @operator_value == "less"
+    @operator_name = "Less than"
+  else
+    @operator_name = "Greater than"
+  end
+  @value = params[:value]
+  erb(:"tags/index_filter_value")
+end

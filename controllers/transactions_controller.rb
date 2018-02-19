@@ -10,7 +10,70 @@ get "/banked/transactions" do
 end
 
 post "/banked/transactions" do
-  transaction = Transaction.new(params)
+  if params[:merchant_id] == "new" || params[:tag_id] == "new"
+    @description = params[:description]
+    @value = params[:value]
+    @spend_date = params[:spend_date]
+    if params[:merchant_id] == "new" && params[:tag_id] == "new"
+      erb(:"transactions/new_merchant_and_tag")
+    elsif params[:merchant_id] == "new"
+      @tag_id = params[:tag_id]
+      erb(:"transactions/new_merchant")
+    else
+      @merchant_id = params[:merchant_id]
+      erb(:"transactions/new_tag")
+    end
+  else
+    transaction = Transaction.new(params)
+    transaction.save()
+    redirect(to("/banked/transactions"))
+  end
+end
+
+post "/banked/transactions/new_merchant" do
+  merchant = Merchant.new(params)
+  merchant.save()
+  transaction = Transaction.new({
+    "description" => params[:description],
+    "value" => params[:value],
+    "spend_date" => params[:spend_date],
+    "merchant_id" => merchant.id,
+    "tag_id" => params[:tag_id]
+  })
+  transaction.save()
+  redirect(to("/banked/transactions"))
+end
+
+post "/banked/transactions/new_tag" do
+  tag = Tag.new(params)
+  tag.save()
+  transaction = Transaction.new({
+    "description" => params[:description],
+    "value" => params[:value],
+    "spend_date" => params[:spend_date],
+    "merchant_id" => params[:merchant_id],
+    "tag_id" => tag.id
+  })
+  transaction.save()
+  redirect(to("/banked/transactions"))
+end
+
+post "/banked/transactions/new_merchant_and_tag" do
+  merchant = Merchant.new({
+    "name" => params[:name_m]
+  })
+  merchant.save()
+  tag = Tag.new({
+    "name" => params[:name_t]
+  })
+  tag.save()
+  transaction = Transaction.new({
+    "description" => params[:description],
+    "value" => params[:value],
+    "spend_date" => params[:spend_date],
+    "merchant_id" => merchant.id,
+    "tag_id" => tag.id
+  })
   transaction.save()
   redirect(to("/banked/transactions"))
 end
