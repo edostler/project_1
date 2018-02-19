@@ -8,9 +8,9 @@
   <p><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
 <% end %>
 
-<p>Filter total sum by tag, merchant and/or date:</p>
+<p>Filter total sum by Tag, Merchant or Date:</p>
 
-<form action="/banked" method="POST">
+<form action="/banked/filter_tag" method="POST">
 
   <label for="tag-select"></label>
   <select name="id" id="tag-select">
@@ -19,6 +19,31 @@
     <% end %>
   </select>
 
-  <input type="submit" value="Filter Spending">
+  <input type="submit" value="Filter By Tag">
+
+</form>
+
+<form action="/banked/filter_merchant" method="POST">
+
+  <label for="merchant-select"></label>
+  <select name="id" id="merchant-select">
+    <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Filter By Merchant">
+
+</form>
+
+<form action="/banked/filter_date" method="POST">
+
+  <label for="start_date">Start Date:</label>
+  <input type="date" name="start_date" id="start_date"/>
+
+  <label for="end_date">End Date:</label>
+  <input type="date" name="end_date" id="end_date"/>
+
+  <input type="submit" value="Filter By Date">
 
 </form>

@@ -41,10 +41,22 @@ class Transaction
     return Merchant.new(merchant.first)
   end
 
+  def self.format_date(date)
+    date_split = date.split("-")
+    date_split_reordered = date_split.reverse
+    date_reordered = date_split_reordered.join("-")
+  end
+
+  def self.sum_date_values(start_date, end_date)
+    sql = "SELECT SUM(value) FROM transactions WHERE spend_date >= $1 AND spend_date <= $2"
+    values = [start_date, end_date]
+    return SqlRunner.run(sql, values).first["sum"].to_f
+  end
+
   def self.sum_values()
     sql = "SELECT SUM(value) FROM transactions"
     values = []
-    return SqlRunner.run(sql, values).first[:sum.to_s].to_f
+    return SqlRunner.run(sql, values).first["sum"].to_f
   end
 
   def self.delete_all()

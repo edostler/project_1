@@ -34,7 +34,7 @@ class Tag
   def self.sum_tag_values(id)
     sql = "SELECT SUM(value) FROM transactions WHERE tag_id = $1"
     values = [id]
-    return SqlRunner.run(sql, values).first[:sum.to_s].to_f
+    return SqlRunner.run(sql, values).first["sum"].to_f
   end
 
   def self.delete_all()

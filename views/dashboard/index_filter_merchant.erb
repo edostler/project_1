@@ -14,8 +14,6 @@
 
   <label for="tag-select"></label>
   <select name="id" id="tag-select">
-    <option value="<%= @tag.id %>"><%= @tag.name %></option>
-    <option value="null" disabled>------</option>
     <% for tag in @tags %>
       <option value="<%= tag.id %>"><%= tag.name %></option>
     <% end %>
@@ -29,6 +27,8 @@
 
   <label for="merchant-select"></label>
   <select name="id" id="merchant-select">
+    <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
+    <option value="null" disabled>------</option>
     <% for merchant in @merchants %>
       <option value="<%= merchant.id %>"><%= merchant.name %></option>
     <% end %>
@@ -50,4 +50,4 @@
 
 </form>
 
-<p>The total sum of the <%= @tag.name %> Tag is £<%= "%.2f" % @sum_tag_total %></p>
+<p>The total sum of the <%= @merchant.name %> Merchant is £<%= "%.2f" % @sum_merchant_total %></p>

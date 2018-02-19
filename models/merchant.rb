@@ -31,6 +31,12 @@ class Merchant
     return tags.map {|tag| Tag.new(tag)}
   end
 
+  def self.sum_merchant_values(id)
+    sql = "SELECT SUM(value) FROM transactions WHERE merchant_id = $1"
+    values = [id]
+    return SqlRunner.run(sql, values).first["sum"].to_f
+  end
+
   def self.delete_all()
     sql = "DELETE FROM merchants"
     values = []
