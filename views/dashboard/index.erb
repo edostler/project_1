@@ -1,6 +1,14 @@
+<h1>Dashboard</h1>
+
+<p><b>Budget: £<%= "%.2f" % @budget %></b></p>
+
 <p>The total sum of your transactions to date is: £<%= "%.2f" % @sum_total %></p>
 
-<p>Filter total sum by tag:</p>
+<% if @sum_total > @budget %>
+  <p><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
+<% end %>
+
+<p>Filter total sum by tag, merchant and/or date:</p>
 
 <form action="/banked" method="POST">
 
@@ -11,6 +19,6 @@
     <% end %>
   </select>
 
-  <input type="submit" value="Go">
+  <input type="submit" value="Filter Spending">
 
 </form>

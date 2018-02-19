@@ -57,6 +57,13 @@ class Tag
     return Tag.new(tag.first)
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM tags WHERE name = $1"
+    values = [name]
+    tag = SqlRunner.run(sql, values)
+    return Tag.new(tag.first)
+  end
+
   def self.delete(id)
     sql = "DELETE FROM tags WHERE id = $1"
     values = [id]
