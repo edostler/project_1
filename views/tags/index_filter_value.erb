@@ -13,13 +13,39 @@
 
 <p><b>Filter Tags by Value:</b></p>
 
+<form action="/banked/tags/filter_value" method="POST">
+
+  <label for="value-select"></label>
+  <select name="operator" id="value-select">
+    <option value="<%= @operator_value %>"><%= @operator_name %></option>
+    <option value="null" disabled>------</option>
+    <option value="less">Less Than</option>
+    <option value="greater">Greater Than</option>
+  </select>
+
+  <label for="value">Value: £</label>
+  <input type="number" name="value" id="value" value="<%= "%.2f" % @value %>" required/>
+
+  <input type="submit" value="Filter By Value">
+
+</form>
+
 <p><b>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
 
 <% @tags.each do |tag| %>
-
-  <p>------------------------------</p>
-  <p>Tag ID: <%= tag.id %></p>
-  <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
-  <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
-
+<% if @operator_value == "less" %>
+  <% if Tag.sum_tag_values(tag.id) < @value.to_f %>
+    <p>------------------------------</p>
+    <p>Tag ID: <%= tag.id %></p>
+    <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
+    <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+  <% end %>
+<% else %>
+  <% if Tag.sum_tag_values(tag.id) > @value.to_f %>
+    <p>------------------------------</p>
+    <p>Tag ID: <%= tag.id %></p>
+    <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
+    <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+    <% end %>
+  <% end %>
 <% end %>

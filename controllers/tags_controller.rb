@@ -7,8 +7,13 @@ end
 
 post "/banked/tags" do
   tag = Tag.new(params)
-  tag.save()
-  redirect(to("/banked/tags"))
+  tags = Tag.tags()
+  if tags.include?(tag.name)
+    redirect(to("/banked/tags"))
+  else
+    tag.save()
+    redirect(to("/banked/tags"))
+  end
 end
 
 get "/banked/tags/:id" do
@@ -18,8 +23,13 @@ end
 
 post "/banked/tags/:id/edit" do
   tag = Tag.new(params)
-  tag.update()
-  redirect(to("/banked/tags"))
+  tags = Tag.tags()
+  if tags.include?(tag.name)
+    redirect(to("/banked/tags"))
+  else
+    tag.update()
+    redirect(to("/banked/tags"))
+  end
 end
 
 post "/banked/tags/:id/delete" do
@@ -28,7 +38,7 @@ post "/banked/tags/:id/delete" do
 end
 
 post "/banked/tags/filter_value" do
-  @tags = Tag.filter_value(params[:operator], params[:value])
+  @tags = Tag.all()
   @operator_value = params[:operator]
   if @operator_value == "less"
     @operator_name = "Less than"

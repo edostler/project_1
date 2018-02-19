@@ -32,31 +32,61 @@ end
 
 post "/banked/transactions/new_merchant" do
   merchant = Merchant.new(params)
-  merchant.save()
-  transaction = Transaction.new({
-    "description" => params[:description],
-    "value" => params[:value],
-    "spend_date" => params[:spend_date],
-    "merchant_id" => merchant.id,
-    "tag_id" => params[:tag_id]
-  })
-  transaction.save()
-  redirect(to("/banked/transactions"))
+  merchants = Merchant.merchants()
+  if merchants.include?(merchant.name)
+    existing_merchant = Merchant.find_by_name(merchant.name)
+    transaction = Transaction.new({
+      "description" => params[:description],
+      "value" => params[:value],
+      "spend_date" => params[:spend_date],
+      "merchant_id" => existing_merchant.id,
+      "tag_id" => params[:tag_id]
+    })
+    transaction.save()
+    redirect(to("/banked/transactions"))
+  else
+    merchant.save()
+    transaction = Transaction.new({
+      "description" => params[:description],
+      "value" => params[:value],
+      "spend_date" => params[:spend_date],
+      "merchant_id" => merchant.id,
+      "tag_id" => params[:tag_id]
+    })
+    transaction.save()
+    redirect(to("/banked/transactions"))
+  end
 end
 
 post "/banked/transactions/new_tag" do
   tag = Tag.new(params)
-  tag.save()
-  transaction = Transaction.new({
-    "description" => params[:description],
-    "value" => params[:value],
-    "spend_date" => params[:spend_date],
-    "merchant_id" => params[:merchant_id],
-    "tag_id" => tag.id
-  })
-  transaction.save()
-  redirect(to("/banked/transactions"))
+  tags = Tag.tags()
+  if tags.include?(tag.name)
+    existing_tag = Tag.find_by_name(tag.name)
+    transaction = Transaction.new({
+      "description" => params[:description],
+      "value" => params[:value],
+      "spend_date" => params[:spend_date],
+      "merchant_id" => params[:merchant_id],
+      "tag_id" => existing_tag.id
+    })
+    transaction.save()
+    redirect(to("/banked/transactions"))
+  else
+    tag.save()
+    transaction = Transaction.new({
+      "description" => params[:description],
+      "value" => params[:value],
+      "spend_date" => params[:spend_date],
+      "merchant_id" => params[:merchant_id],
+      "tag_id" => tag.id
+    })
+    transaction.save()
+    redirect(to("/banked/transactions"))
+  end
 end
+
+COMPLETE THE UNIQUE TAG/MERCHANT ERROR AVOIDANCE FOR THE MERCHANT_AND_TAG BELOW
 
 post "/banked/transactions/new_merchant_and_tag" do
   merchant = Merchant.new({

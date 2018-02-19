@@ -49,6 +49,11 @@ class Merchant
     return merchant.map{|merchant| Merchant.new(merchant)}
   end
 
+  def self.merchants()
+    merchants = Merchant.all()
+    return merchants.map{|merchant| merchant.name}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM merchants WHERE id = $1"
     values = [id]
@@ -61,20 +66,6 @@ class Merchant
     values = [name]
     merchant = SqlRunner.run(sql, values)
     return Merchant.new(merchant.first)
-  end
-
-  def self.filter_value(operator, value)
-    if operator == "less"
-      sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE transactions.value < $1"
-      values = [value]
-      merchant = SqlRunner.run(sql, values)
-      return merchant.map{|merchant| Merchant.new(merchant)}
-    else
-      sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE transactions.value > $1"
-      values = [value]
-      merchant = SqlRunner.run(sql, values)
-      return merchant.map{|merchant| Merchant.new(merchant)}
-    end
   end
 
   def self.delete(id)

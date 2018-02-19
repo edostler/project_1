@@ -49,6 +49,11 @@ class Tag
     return tag.map{|tag| Tag.new(tag)}
   end
 
+  def self.tags()
+    tags = Tag.all()
+    return tags.map{|tag| tag.name}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM tags WHERE id = $1"
     values = [id]
@@ -61,20 +66,6 @@ class Tag
     values = [name]
     tag = SqlRunner.run(sql, values)
     return Tag.new(tag.first)
-  end
-
-  def self.filter_value(operator, value)
-    if operator == "less"
-      sql = "SELECT tags.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id WHERE transactions.value < $1"
-      values = [value]
-      tag = SqlRunner.run(sql, values)
-      return tag.map{|tag| Tag.new(tag)}
-    else
-      sql = "SELECT tags.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id WHERE transactions.value > $1"
-      values = [value]
-      tag = SqlRunner.run(sql, values)
-      return tag.map{|tag| Tag.new(tag)}
-    end
   end
 
   def self.delete(id)
