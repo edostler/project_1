@@ -37,6 +37,8 @@
 
   <label for="tag-select"></label>
   <select name="id" id="tag-select">
+    <option value="<%= @tag.id %>"><%= @tag.name %></option>
+    <option value="null" disabled>------</option>
     <% for tag in @tags %>
       <option value="<%= tag.id %>"><%= tag.name %></option>
     <% end %>
@@ -86,7 +88,7 @@
 
 </form>
 
-<p><b>All Previous Transactions:</b></p>
+<p><b>Previous Transactions Filtered by Tag = <%= @tag.name %>:</b></p>
 
 <% @transactions.each do |transaction| %>
 

@@ -50,6 +50,8 @@
 
   <label for="merchant-select"></label>
   <select name="id" id="merchant-select">
+    <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
+    <option value="null" disabled>------</option>
     <% for merchant in @merchants %>
       <option value="<%= merchant.id %>"><%= merchant.name %></option>
     <% end %>
@@ -86,7 +88,7 @@
 
 </form>
 
-<p><b>All Previous Transactions:</b></p>
+<p><b>Previous Transactions Filtered by Merchant = <%= @merchant.name %>:</b></p>
 
 <% @transactions.each do |transaction| %>
 
