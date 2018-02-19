@@ -8,44 +8,36 @@ Tag.delete_all()
 Transaction.delete_all()
 
 merchant1 = Merchant.new({
-  "name" => "Sainsburys",
-  "total_spend" => 0
+  "name" => "Sainsburys"
 })
 merchant1.save()
 merchant2 = Merchant.new({
-  "name" => "Dominos",
-  "total_spend" => 0
+  "name" => "Dominos"
 })
 merchant2.save()
 merchant3 = Merchant.new({
-  "name" => "Bier Halle",
-  "total_spend" => 0
+  "name" => "Bier Halle"
 })
 merchant3.save()
 merchant4 = Merchant.new({
-  "name" => "Slouch",
-  "total_spend" => 0
+  "name" => "Slouch"
 })
 merchant4.save()
 
 tag1 = Tag.new({
-  "name" => "Food Shop",
-  "total_spend" => 0
+  "name" => "Food Shop"
 })
 tag1.save()
 tag2 = Tag.new({
-  "name" => "Take-away",
-  "total_spend" => 0
+  "name" => "Take-away"
 })
 tag2.save()
 tag3 = Tag.new({
-  "name" => "Restaurant",
-  "total_spend" => 0
+  "name" => "Restaurant"
 })
 tag3.save()
 tag4 = Tag.new({
-  "name" => "Bar",
-  "total_spend" => 0
+  "name" => "Bar"
 })
 tag4.save()
 

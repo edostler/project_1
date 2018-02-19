@@ -4,14 +4,12 @@ DROP TABLE transactions CASCADE;
 
 CREATE TABLE merchants (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  total_spend FLOAT
+  name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE tags (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  total_spend FLOAT
+  name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE transactions (

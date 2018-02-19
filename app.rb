@@ -40,8 +40,10 @@ post "/banked/filter_date" do
   @tags = Tag.all()
   @merchants = Merchant.all()
   @sum_date_total = Transaction.sum_date_values(params[:start_date], params[:end_date])
-  @start_date = Transaction.format_date(params[:start_date])
-  @end_date = Transaction.format_date(params[:end_date])
+  @start_date = params[:start_date]
+  @end_date = params[:end_date]
+  @start_date_formatted = Transaction.format_date(params[:start_date])
+  @end_date_formatted = Transaction.format_date(params[:end_date])
   @budget = 200.00
   erb(:"dashboard/index_filter_date")
 end
