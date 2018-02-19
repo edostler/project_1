@@ -78,32 +78,34 @@ class Transaction
     transaction = SqlRunner.run(sql, values)
     return Transaction.new(transaction.first)
   end
+
   def self.filter_tag(id)
     sql = "SELECT * FROM transactions WHERE tag_id = $1"
     values = [id]
     transaction = SqlRunner.run(sql, values)
     return transaction.map{|transaction| Transaction.new(transaction)}
   end
+
   def self.filter_merchant(id)
     sql = "SELECT * FROM transactions WHERE merchant_id = $1"
     values = [id]
     transaction = SqlRunner.run(sql, values)
     return transaction.map{|transaction| Transaction.new(transaction)}
   end
-  def self.filter_date(id)
-    sql = "SELECT * FROM transactions WHERE id = $1"
-    values = [id]
+
+  def self.filter_date(start_date, end_date)
+    sql = "SELECT * FROM transactions WHERE spend_date >= $1 AND spend_date <= $2"
+    values = [start_date, end_date]
     transaction = SqlRunner.run(sql, values)
-    return Transaction.new(transaction.first)
+    return transaction.map{|transaction| Transaction.new(transaction)}
   end
+
   def self.filter_value(id)
     sql = "SELECT * FROM transactions WHERE id = $1"
     values = [id]
     transaction = SqlRunner.run(sql, values)
     return Transaction.new(transaction.first)
   end
-
-
 
   def self.delete(id)
     sql = "DELETE FROM transactions WHERE id = $1"

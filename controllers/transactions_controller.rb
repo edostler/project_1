@@ -50,9 +50,13 @@ post "/banked/transactions/filter_merchant" do
 end
 
 post "/banked/transactions/filter_date" do
-  @transactions = Transaction.all()
+  @transactions = Transaction.filter_date(params[:start_date], params[:end_date])
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @start_date = params[:start_date]
+  @end_date = params[:end_date]
+  @start_date_formatted = Transaction.format_date(params[:start_date])
+  @end_date_formatted = Transaction.format_date(params[:end_date])
   erb(:"transactions/index_filter_date")
 end
 
