@@ -1,18 +1,36 @@
-<p><b>Add A New Merchant To Complete Transaction:</b></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
 
-<form action="/banked/transactions/new_merchant" method="POST">
+  <div class="title">
+    <h1>New Transaction Details:</h1>
+  </div>
 
-  <label for="name">Merchant Name:</label>
-  <input type="text" name="name" id="name" required/>
+  <div class="content">
+    </html><p><b>Add A New Merchant To Complete Transaction:</b></p>
 
-  <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
+    <form action="/banked/transactions/new_merchant" method="POST">
 
-  <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
+      <label for="name">Merchant Name:</label>
+      <input type="text" name="name" id="name" required/>
 
-  <input type="date" name="spend_date" id="spend_date" value="<%= @spend_date %>" hidden/>
+      <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
 
-  <input type="number" name="tag_id" id="tag_id" value="<%= @tag_id %>" hidden/>
+      <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
 
-  <input type="submit" value="Complete Transaction">
+      <input type="date" name="spend_date" id="spend_date" value="<%= @spend_date %>" hidden/>
 
-</form>
+      <input type="number" name="tag_id" id="tag_id" value="<%= @tag_id %>" hidden/>
+
+      <input type="submit" value="Complete Transaction">
+
+    </form>
+  </div>
+
+</body>

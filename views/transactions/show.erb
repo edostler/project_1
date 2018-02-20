@@ -1,42 +1,59 @@
-<h1>Transaction Details:</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
 
-<p><b>Edit And Update Transaction:</b></p>
+  <div class="title">
+    <h1>Transaction Details:</h1>
+  </div>
 
-<form action="/banked/transactions/<%= @transaction.id %>/edit" method="POST">
+  <div class="content">
+    <p><b>Edit And Update Transaction:</b></p>
 
-  <label for="description">Description:</label>
-  <input type="text" name="description" id="description" value="<%= @transaction.description %>"/>
+    <form action="/banked/transactions/<%= @transaction.id %>/edit" method="POST">
 
-  <label for="value">Value: £</label>
-  <input type="number" step="0.01" name="value" id="value" value="<%= "%.2f" % @transaction.value %>"/>
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="description" value="<%= @transaction.description %>"/>
 
-  <label for="spend_date">Date:</label>
-  <input type="date" name="spend_date" id="spend_date" value="<%= @transaction.spend_date %>"/>
+      <label for="value">Value: £</label>
+      <input type="number" step="0.01" name="value" id="value" value="<%= "%.2f" % @transaction.value %>"/>
 
-  <label for="merchant-select">Merchant:</label>
-  <select name="merchant_id" id="merchant-select">
-    <option value="<%= @transaction.merchant_id %>"><%= Merchant.find(@transaction.merchant_id).name %></option>
-    <option value="null" disabled>------</option>
-    <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
-    <% end %>
-  </select>
+      <label for="spend_date">Date:</label>
+      <input type="date" name="spend_date" id="spend_date" value="<%= @transaction.spend_date %>"/>
 
-  <label for="tag-select">Tag:</label>
-  <select name="tag_id" id="tag-select">
-    <option value="<%= @transaction.tag_id %>"><%= Tag.find(@transaction.tag_id).name %></option>
-    <option value="null" disabled>------</option>
-    <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name %></option>
-    <% end %>
-  </select>
+      <label for="merchant-select">Merchant:</label>
+      <select name="merchant_id" id="merchant-select">
+        <option value="<%= @transaction.merchant_id %>"><%= Merchant.find(@transaction.merchant_id).name %></option>
+        <option value="null" disabled>------</option>
+        <% for merchant in @merchants %>
+          <option value="<%= merchant.id %>"><%= merchant.name %></option>
+        <% end %>
+      </select>
 
-  <input type="submit" value="Update Record">
+      <label for="tag-select">Tag:</label>
+      <select name="tag_id" id="tag-select">
+        <option value="<%= @transaction.tag_id %>"><%= Tag.find(@transaction.tag_id).name %></option>
+        <option value="null" disabled>------</option>
+        <% for tag in @tags %>
+          <option value="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
 
-</form>
+      <input type="submit" value="Update Record">
 
-<p><b>Permanently Delete Transaction:</b></p>
+    </form>
 
-<form action="/banked/transactions/<%= @transaction.id %>/delete" method="POST">
-  <button type="submit">Delete Record</button>
-</form>
+    <p><b>Permanently Delete Transaction:</b></p>
+
+    <form action="/banked/transactions/<%= @transaction.id %>/delete" method="POST">
+      <button type="submit">Delete Record</button>
+    </form>
+  </div>
+
+</body>
+</html>

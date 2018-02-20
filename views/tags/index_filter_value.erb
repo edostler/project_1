@@ -1,53 +1,70 @@
-<h1>Tags</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
 
-<p><b>Add A New Tag:</b></p>
+  <div class="title">
+    <h1>Tags</h1>
+  </div>
 
-<form action="/banked/tags" method="POST">
+  <div class="content">
+    <p><b>Add A New Tag:</b></p>
 
-  <label for="name">Tag Name:</label>
-  <input type="text" name="name" id="name"/>
+    <form action="/banked/tags" method="POST">
 
-  <input type="submit" value="Add Tag">
+      <label for="name">Tag Name:</label>
+      <input type="text" name="name" id="name"/>
 
-</form>
+      <input type="submit" value="Add Tag">
 
-<p><b>Filter Tags by Value:</b></p>
+    </form>
 
-<form action="/banked/tags/filter_value" method="POST">
+    <p><b>Filter Tags by Value:</b></p>
 
-  <label for="value-select"></label>
-  <select name="operator" id="value-select">
-    <option value="<%= @operator_value %>"><%= @operator_name %></option>
-    <option value="null" disabled>------</option>
-    <option value="less">Less Than</option>
-    <option value="greater">Greater Than</option>
-  </select>
+    <form action="/banked/tags/filter_value" method="POST">
 
-  <label for="value">Value: £</label>
-  <input type="number" name="value" id="value" value="<%= "%.2f" % @value %>" required/>
+      <label for="value-select"></label>
+      <select name="operator" id="value-select">
+        <option value="<%= @operator_value %>"><%= @operator_name %></option>
+        <option value="null" disabled>------</option>
+        <option value="less">Less Than</option>
+        <option value="greater">Greater Than</option>
+      </select>
 
-  <input type="submit" value="Filter By Value">
+      <label for="value">Value: £</label>
+      <input type="number" name="value" id="value" value="<%= "%.2f" % @value %>" required/>
 
-</form>
+      <input type="submit" value="Filter By Value">
 
-<a href="/banked/tags">Reset Filter</a>
+    </form>
 
-<p><b>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
+    <a href="/banked/tags">Reset Filter</a>
 
-<% @tags.each do |tag| %>
-<% if @operator_value == "less" %>
-  <% if Tag.sum_tag_values(tag.id) < @value.to_f %>
-    <p>------------------------------</p>
-    <p>Tag ID: <%= tag.id %></p>
-    <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
-    <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
-  <% end %>
-<% else %>
-  <% if Tag.sum_tag_values(tag.id) > @value.to_f %>
-    <p>------------------------------</p>
-    <p>Tag ID: <%= tag.id %></p>
-    <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
-    <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+    <p><b>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
+
+    <% @tags.each do |tag| %>
+    <% if @operator_value == "less" %>
+      <% if Tag.sum_tag_values(tag.id) < @value.to_f %>
+        <p>------------------------------</p>
+        <p>Tag ID: <%= tag.id %></p>
+        <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
+        <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+      <% end %>
+    <% else %>
+      <% if Tag.sum_tag_values(tag.id) > @value.to_f %>
+        <p>------------------------------</p>
+        <p>Tag ID: <%= tag.id %></p>
+        <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
+        <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+
+</body>
+</html>

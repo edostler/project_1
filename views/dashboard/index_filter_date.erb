@@ -1,51 +1,68 @@
-<h1>Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
 
-<p><b>Budget: £<%= "%.2f" % @budget %></b></p>
+  <div class="title">
+    <h1>Dashboard</h1>
+  </div>
 
-<p>The total sum of your transactions to date is: £<%= "%.2f" % @sum_total %></p>
+  <div class="content">
+    <p><b>Budget: £<%= "%.2f" % @budget %></b></p>
 
-<% if @sum_total > @budget %>
-  <p><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
-<% end %>
+    <p>The total sum of your transactions to date is: £<%= "%.2f" % @sum_total %></p>
 
-<p><b>Filter total sum by Tag, Merchant or Date:</b></p>
-
-<form action="/banked/filter_tag" method="POST">
-
-  <label for="tag-select"></label>
-  <select name="id" id="tag-select">
-    <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name %></option>
+    <% if @sum_total > @budget %>
+      <p><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
     <% end %>
-  </select>
 
-  <input type="submit" value="Filter By Tag">
+    <p><b>Filter total sum by Tag, Merchant or Date:</b></p>
 
-</form>
+    <form action="/banked/filter_tag" method="POST">
 
-<form action="/banked/filter_merchant" method="POST">
+      <label for="tag-select"></label>
+      <select name="id" id="tag-select">
+        <% for tag in @tags %>
+          <option value="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
 
-  <label for="merchant-select"></label>
-  <select name="id" id="merchant-select">
-    <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
-    <% end %>
-  </select>
+      <input type="submit" value="Filter By Tag">
 
-  <input type="submit" value="Filter By Merchant">
+    </form>
 
-</form>
+    <form action="/banked/filter_merchant" method="POST">
 
-<form action="/banked/filter_date" method="POST">
+      <label for="merchant-select"></label>
+      <select name="id" id="merchant-select">
+        <% for merchant in @merchants %>
+          <option value="<%= merchant.id %>"><%= merchant.name %></option>
+        <% end %>
+      </select>
 
-  <label for="start_date">Start Date:</label>
-  <input type="date" name="start_date" id="start_date" value="<%= @start_date %>" required/>
+      <input type="submit" value="Filter By Merchant">
 
-  <label for="end_date">End Date:</label>
-  <input type="date" name="end_date" id="end_date" value="<%= @end_date %>" required/>
+    </form>
 
-  <input type="submit" value="Filter By Date">
+    <form action="/banked/filter_date" method="POST">
 
-</form>
+      <label for="start_date">Start Date:</label>
+      <input type="date" name="start_date" id="start_date" value="<%= @start_date %>" required/>
 
-<p>The total sum between the selected dates of <%= @start_date_formatted %> and <%= @end_date_formatted %> is £<%= "%.2f" % @sum_date_total %></p>
+      <label for="end_date">End Date:</label>
+      <input type="date" name="end_date" id="end_date" value="<%= @end_date %>" required/>
+
+      <input type="submit" value="Filter By Date">
+
+    </form>
+
+    <p>The total sum between the selected dates of <%= @start_date_formatted %> and <%= @end_date_formatted %> is £<%= "%.2f" % @sum_date_total %></p>
+  </div>
+
+</body>
+</html>

@@ -1,20 +1,37 @@
-<h1>Tag Details:</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
 
-<p><b>Edit And Update Tag:</b></p>
+  <div class="title">
+    <h1>Tag Details:</h1>
+  </div>
 
-<form action="/banked/tags/<%= @tag.id %>/edit" method="POST">
+  <div class="content">
+    <p><b>Edit And Update Tag:</b></p>
 
-  <label for="name">Tag Name:</label>
-  <input type="text" name="name" id="name" value="<%= @tag.name %>" required/>
+    <form action="/banked/tags/<%= @tag.id %>/edit" method="POST">
 
-  <input type="submit" value="Update Record">
+      <label for="name">Tag Name:</label>
+      <input type="text" name="name" id="name" value="<%= @tag.name %>" required/>
 
-</form>
+      <input type="submit" value="Update Record">
 
-<p><b>Permanently Delete Tag:</b></p>
+    </form>
 
-<form action="/banked/tags/<%= @tag.id %>/delete" method="POST">
-  <button type="submit">Delete Record</button>
-</form>
+    <p><b>Permanently Delete Tag:</b></p>
 
-<p><b><i>WARNING: this will also delete any associated transactions.</i></b></p>
+    <form action="/banked/tags/<%= @tag.id %>/delete" method="POST">
+      <button type="submit">Delete Record</button>
+    </form>
+
+    <p><b><i>WARNING: this will also delete any associated transactions.</i></b></p>
+  </div>
+
+</body>
+</html>
