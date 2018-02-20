@@ -10,6 +10,7 @@
 
   <div class="title">
     <h1>Merchants</h1>
+    <img height="75px" class="logo_sm" src="/images/banked_logo_final.png" alt="BankEd: You Can Bank On Ed!">
   </div>
 
   <div class="content">
@@ -45,25 +46,38 @@
 
     <a href="/banked/merchants">Reset Filter</a>
 
-    <p><b>Current Merchants Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
+    <table>
+      <caption>Current Merchants Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %></caption>
+      <thead>
+        <tr>
+          <th scope="col">Merchant ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Total Spend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @merchants.each do |merchant| %>
+          <% if @operator_value == "less" %>
+            <% if Merchant.sum_merchant_values(merchant.id) < @value.to_f %>
+              <tr>
+                <td data-label="Merchant"><%= merchant.id %></td>
+                <td data-label="Name"><a href="/banked/merchants/<%= merchant.id %>"><%= merchant.name %></a></td>
+                <td data-label="Total Spend">£<%= "%.2f" % Merchant.sum_merchant_values(merchant.id) %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <% if Merchant.sum_merchant_values(merchant.id) > @value.to_f %>
+              <tr>
+                <td data-label="Merchant"><%= merchant.id %></td>
+                <td data-label="Name"><a href="/banked/merchants/<%= merchant.id %>"><%= merchant.name %></a></td>
+                <td data-label="Total Spend">£<%= "%.2f" % Merchant.sum_merchant_values(merchant.id) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
 
-    <% @merchants.each do |merchant| %>
-      <% if @operator_value == "less" %>
-        <% if Merchant.sum_merchant_values(merchant.id) < @value.to_f %>
-          <p>------------------------------</p>
-          <p>Merchant ID: <%= merchant.id %></p>
-          <p>Name: <a href="/banked/merchants/<%= merchant.id %>"><%= merchant.name %></a></p>
-          <p>Total Spend: £<%= "%.2f" % Merchant.sum_merchant_values(merchant.id) %></p>
-        <% end %>
-      <% else %>
-        <% if Merchant.sum_merchant_values(merchant.id) > @value.to_f %>
-          <p>------------------------------</p>
-          <p>Merchant ID: <%= merchant.id %></p>
-          <p>Name: <a href="/banked/merchants/<%= merchant.id %>"><%= merchant.name %></a></p>
-          <p>Total Spend: £<%= "%.2f" % Merchant.sum_merchant_values(merchant.id) %></p>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 
 </body>

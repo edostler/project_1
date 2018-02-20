@@ -10,6 +10,7 @@
 
   <div class="title">
     <h1>Tags</h1>
+    <img height="75px" class="logo_sm" src="/images/banked_logo_final.png" alt="BankEd: You Can Bank On Ed!">
   </div>
 
   <div class="content">
@@ -45,25 +46,38 @@
 
     <a href="/banked/tags">Reset Filter</a>
 
-    <p><b>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %>:</b></p>
-
-    <% @tags.each do |tag| %>
-    <% if @operator_value == "less" %>
-      <% if Tag.sum_tag_values(tag.id) < @value.to_f %>
-        <p>------------------------------</p>
-        <p>Tag ID: <%= tag.id %></p>
-        <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
-        <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
-      <% end %>
-    <% else %>
-      <% if Tag.sum_tag_values(tag.id) > @value.to_f %>
-        <p>------------------------------</p>
-        <p>Tag ID: <%= tag.id %></p>
-        <p>Name: <a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></p>
-        <p>Total Spend: £<%= "%.2f" % Tag.sum_tag_values(tag.id) %></p>
+    <table>
+      <caption>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %></caption>
+      <thead>
+        <tr>
+          <th scope="col">Tag ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Total Spend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+          <% if @operator_value == "less" %>
+            <% if Tag.sum_tag_values(tag.id) < @value.to_f %>
+              <tr>
+                <td data-label="Tag"><%= tag.id %></td>
+                <td data-label="Name"><a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></td>
+                <td data-label="Total Spend">£<%= "%.2f" % Tag.sum_tag_values(tag.id) %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <% if Tag.sum_tag_values(tag.id) > @value.to_f %>
+              <tr>
+                <td data-label="Tag"><%= tag.id %></td>
+                <td data-label="Name"><a href="/banked/tags/<%= tag.id %>"><%= tag.name %></a></td>
+                <td data-label="Total Spend">£<%= "%.2f" % Tag.sum_tag_values(tag.id) %></td>
+              </tr>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </tbody>
+    </table>
+
   </div>
 
 </body>

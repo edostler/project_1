@@ -10,9 +10,11 @@
 
   <div class="title">
     <h1>Transactions</h1>
+    <img height="75px" class="logo_sm" src="/images/banked_logo_final.png" alt="BankEd: You Can Bank On Ed!">
   </div>
 
   <div class="content">
+
     <p><b>Add A New Transaction:</b></p>
 
     <form action="/banked/transactions" method="POST">
@@ -105,19 +107,32 @@
 
     <a href="/banked/transactions">Reset Filter</a>
 
-    <p><b>All Previous Transactions:</b></p>
+    <table>
+      <caption>All Previous Transactions</caption>
+      <thead>
+        <tr>
+          <th scope="col">Transaction ID</th>
+          <th scope="col">Description</th>
+          <th scope="col">Value</th>
+          <th scope="col">Date</th>
+          <th scope="col">Merchant</th>
+          <th scope="col">Tag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+        <tr>
+          <td data-label="Transaction ID"><%= transaction.id %></td>
+          <td data-label="Description"><a href="/banked/transactions/<%= transaction.id %>"><%= transaction.description %></a></td>
+          <td data-label="Value">£<%= "%.2f" % transaction.value %></td>
+          <td data-label="Date"><%= transaction.spend_date %></td>
+          <td data-label="Merchant"><%= Merchant.find(transaction.merchant_id).name %></td>
+          <td data-label="Tag"><%= Tag.find(transaction.tag_id).name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-    <% @transactions.each do |transaction| %>
-
-      <p>------------------------------</p>
-      <p>Transaction ID: <%= transaction.id %></p>
-      <p>Description: <a href="/banked/transactions/<%= transaction.id %>"><%= transaction.description %></a></p>
-      <p>Value: £<%= "%.2f" % transaction.value %></p>
-      <p>Date: <%= transaction.spend_date %></p>
-      <p>Merchant: <%= Merchant.find(transaction.merchant_id).name %></p>
-      <p>Tag: <%= Tag.find(transaction.tag_id).name %></p>
-
-    <% end %>
   </div>
 
 </body>
