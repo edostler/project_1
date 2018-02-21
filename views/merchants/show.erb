@@ -15,7 +15,7 @@
 
   <div class="content">
     <div class="new_entry">
-      <p><b>Edit And Update Merchant:</b></p>
+      <p class="indent"><b>Edit And Update Merchant:</b></p>
 
       <form action="/banked/merchants/<%= @merchant.id %>/edit" method="POST">
 
@@ -29,13 +29,13 @@
     </div>
 
     <div class="filter">
-      <p><b>Permanently Delete Merchant:</b></p>
+      <p class="indent"><b>Permanently Delete Merchant:</b></p>
 
       <form action="/banked/merchants/<%= @merchant.id %>/delete" method="POST">
         <button type="submit">Delete Record</button>
       </form>
 
-      <p><b><i>WARNING: this will also delete any associated Transactions.</i></b></p>
+      <p class="indent"><b><i>WARNING: this will also delete any associated Transactions.</i></b></p>
     </div>
 
 

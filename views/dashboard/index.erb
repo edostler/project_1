@@ -14,20 +14,20 @@
 
   <div class="content">
     <div class="new_entry">
-      <p><b>Spending Details:</b></p>
+      <p class="indent"><b>Spending Details:</b></p>
 
-      <p><b>Budget: £<%= "%.2f" % @budget %></b></p>
+      <p class="indent"><b>Budget: £<%= "%.2f" % @budget %></b></p>
 
-      <p>The total sum of your transactions to date is: £<%= "%.2f" % @sum_total %></p>
+      <p class="indent">The total sum of your transactions to date is: £<%= "%.2f" % @sum_total %></p>
 
       <% if @sum_total > @budget %>
-        <p><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
+        <p class="indent"><b>Budget Warning: you have exceeded your budget by £<%= "%.2f" % (@sum_total-@budget) %>!</b></p>
       <% end %>
     </div>
 
 
     <div class="filter">
-      <p><b>Filter total sum by Tag, Merchant or Date:</b></p>
+      <p class="indent"><b>Filter total sum by Tag, Merchant or Date:</b></p>
 
       <form action="/banked/filter_tag" method="POST">
 

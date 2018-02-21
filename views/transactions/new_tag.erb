@@ -15,7 +15,7 @@
 
   <div class="content">
     <div class="new_entry">
-      </html><p><b>Add A New Tag To Complete Transaction:</b></p>
+      <p class="indent"><b>Add A New Tag To Complete Transaction:</b></p>
 
       <form action="/banked/transactions/new_tag" method="POST">
 
@@ -23,7 +23,7 @@
           <label for="name">Tag:</label>
           <input type="text" name="name" id="name" required/>
         </div>
-        
+
         <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
 
         <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
@@ -40,3 +40,4 @@
   </div>
 
 </body>
+</html>

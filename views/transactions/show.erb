@@ -15,7 +15,7 @@
 
   <div class="content">
     <div class="new_entry">
-      <p><b>Edit And Update Transaction:</b></p>
+      <p class="indent"><b>Edit And Update Transaction:</b></p>
 
       <form action="/banked/transactions/<%= @transaction.id %>/edit" method="POST">
 
@@ -62,7 +62,7 @@
     </div>
 
     <div class="filter">
-      <p><b>Permanently Delete Transaction:</b></p>
+      <p class="indent"><b>Permanently Delete Transaction:</b></p>
 
       <form action="/banked/transactions/<%= @transaction.id %>/delete" method="POST">
         <button type="submit">Delete Record</button>

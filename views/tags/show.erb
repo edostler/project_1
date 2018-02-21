@@ -15,7 +15,7 @@
 
   <div class="content">
     <div class="new_entry">
-      <p><b>Edit And Update Tag:</b></p>
+      <p class="indent"><b>Edit And Update Tag:</b></p>
 
       <form action="/banked/tags/<%= @tag.id %>/edit" method="POST">
 
@@ -28,15 +28,15 @@
     </div>
 
     <div class="filter">
-      <p><b>Permanently Delete Tag:</b></p>
+      <p class="indent"><b>Permanently Delete Tag:</b></p>
 
       <form action="/banked/tags/<%= @tag.id %>/delete" method="POST">
         <button type="submit">Delete Record</button>
       </form>
 
-      <p><b><i>WARNING: this will also delete any associated transactions.</i></b></p>
+      <p class="indent"><b><i>WARNING: this will also delete any associated transactions.</i></b></p>
     </div>
-    
+
   </div>
 
 </body>
