@@ -14,35 +14,41 @@
   </div>
 
   <div class="content">
-    <p><b>Add A New Merchant:</b></p>
+    <div class="new_entry">
+      <p><b>Add A New Merchant:</b></p>
 
-    <form action="/banked/merchants" method="POST">
+      <form action="/banked/merchants" method="POST">
 
-      <label for="name">Merchant Name:</label>
-      <input type="text" name="name" id="name" required/>
+        <label for="name">Merchant:</label>
+        <input type="text" name="name" id="name" required/>
 
-      <input type="submit" value="Add Merchant">
+        <input type="submit" value="Add Merchant">
 
-    </form>
+      </form>
+    </div>
 
-    <p><b>Filter Merchants by Value:</b></p>
 
-    <form action="/banked/merchants/filter_value" method="POST">
+    <div class="filter">
+      <p><b>Filter Merchants by Value:</b></p>
 
-      <label for="value-select"></label>
-      <select name="operator" id="value-select">
-        <option value="less">Less Than</option>
-        <option value="greater">Greater Than</option>
-      </select>
+      <form action="/banked/merchants/filter_value" method="POST">
 
-      <label for="value">Value: £</label>
-      <input type="number" name="value" id="value" required/>
+        <label for="value-select">By Value:</label>
+        <select name="operator" id="value-select">
+          <option value="less">Less Than</option>
+          <option value="greater">Greater Than</option>
+        </select>
 
-      <input type="submit" value="Filter By Value">
+        <label for="value">Value (£):</label>
+        <input type="number" name="value" id="value" required/>
 
-    </form>
+        <input type="submit" value="Filter By Value">
 
-    <a href="/banked/merchants">Reset Filter</a>
+      </form>
+
+      <a href="/banked/merchants">Reset Filter</a>
+    </div>
+
 
     <table>
       <caption>All Current Merchants</caption>

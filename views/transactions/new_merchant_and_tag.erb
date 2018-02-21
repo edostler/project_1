@@ -14,25 +14,32 @@
   </div>
 
   <div class="content">
-    </html><p><b>Add A New Merchant And Tag To Complete Transaction:</b></p>
+    <div class="new_entry">
+      </html><p><b>Add A New Merchant And Tag To Complete Transaction:</b></p>
 
-    <form action="/banked/transactions/new_merchant_and_tag" method="POST">
+      <form action="/banked/transactions/new_merchant_and_tag" method="POST">
 
-      <label for="name_m">Merchant Name:</label>
-      <input type="text" name="name_m" id="name_m" required/>
+        <div class="">
+          <label for="name_m">Merchant:</label>
+          <input type="text" name="name_m" id="name_m" required/>
+        </div>
 
-      <label for="name_t">Tag Name:</label>
-      <input type="text" name="name_t" id="name_t" required/>
+        <div class="">
+          <label for="name_t">Tag:</label>
+          <input type="text" name="name_t" id="name_t" required/>
+        </div>
 
-      <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
+        <input type="text" name="description" id="description" value="<%= @description %>" hidden/>
 
-      <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
+        <input type="number" step="0.01" name="value" id="value" value="<%= @value %>" hidden/>
 
-      <input type="date" name="spend_date" id="spend_date" value="<%= @spend_date %>" hidden/>
+        <input type="date" name="spend_date" id="spend_date" value="<%= @spend_date %>" hidden/>
 
-      <input type="submit" value="Complete Transaction">
+        <input type="submit" value="Complete Transaction">
 
-    </form>
+      </form>
+    </div>
+
   </div>
 
 </body>

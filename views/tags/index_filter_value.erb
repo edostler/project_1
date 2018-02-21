@@ -14,37 +14,42 @@
   </div>
 
   <div class="content">
-    <p><b>Add A New Tag:</b></p>
+    <div class="new_entry">
+      <p><b>Add A New Tag:</b></p>
 
-    <form action="/banked/tags" method="POST">
+      <form action="/banked/tags" method="POST">
 
-      <label for="name">Tag Name:</label>
-      <input type="text" name="name" id="name"/>
+        <label for="name">Tag:</label>
+        <input type="text" name="name" id="name"/>
 
-      <input type="submit" value="Add Tag">
+        <input type="submit" value="Add Tag">
 
-    </form>
+      </form>
+    </div>
 
-    <p><b>Filter Tags by Value:</b></p>
 
-    <form action="/banked/tags/filter_value" method="POST">
+    <div class="filter">
+      <p><b>Filter Tags by Value:</b></p>
 
-      <label for="value-select"></label>
-      <select name="operator" id="value-select">
-        <option value="<%= @operator_value %>"><%= @operator_name %></option>
-        <option value="null" disabled>------</option>
-        <option value="less">Less Than</option>
-        <option value="greater">Greater Than</option>
-      </select>
+      <form action="/banked/tags/filter_value" method="POST">
 
-      <label for="value">Value: £</label>
-      <input type="number" name="value" id="value" value="<%= "%.2f" % @value %>" required/>
+        <label for="value-select">By Value:</label>
+        <select name="operator" id="value-select">
+          <option value="<%= @operator_value %>"><%= @operator_name %></option>
+          <option value="null" disabled>------</option>
+          <option value="less">Less Than</option>
+          <option value="greater">Greater Than</option>
+        </select>
 
-      <input type="submit" value="Filter By Value">
+        <label for="value">Value (£):</label>
+        <input type="number" name="value" id="value" value="<%= "%.2f" % @value %>" required/>
 
-    </form>
+        <input type="submit" value="Filter By Value">
 
-    <a href="/banked/tags">Reset Filter</a>
+      </form>
+
+      <a href="/banked/tags">Reset Filter</a>
+    </div>
 
     <table>
       <caption>Current Tags Filtered by Value <%= @operator_name %> £<%= "%.2f" % @value %></caption>

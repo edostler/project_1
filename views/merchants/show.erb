@@ -14,24 +14,31 @@
   </div>
 
   <div class="content">
-    <p><b>Edit And Update Merchant:</b></p>
+    <div class="new_entry">
+      <p><b>Edit And Update Merchant:</b></p>
 
-    <form action="/banked/merchants/<%= @merchant.id %>/edit" method="POST">
+      <form action="/banked/merchants/<%= @merchant.id %>/edit" method="POST">
 
-      <label for="name">Merchant Name:</label>
-      <input type="text" name="name" id="name" value="<%= @merchant.name %>" required/>
+        <label for="name">Merchant:</label>
+        <input type="text" name="name" id="name" value="<%= @merchant.name %>" required/>
 
-      <input type="submit" value="Update Record">
+        <input type="submit" value="Update Record">
 
-    </form>
+      </form>
 
-    <p><b>Permanently Delete Merchant:</b></p>
+    </div>
 
-    <form action="/banked/merchants/<%= @merchant.id %>/delete" method="POST">
-      <button type="submit">Delete Record</button>
-    </form>
+    <div class="filter">
+      <p><b>Permanently Delete Merchant:</b></p>
 
-    <p><b><i>WARNING: this will also delete any associated Transactions.</i></b></p>
+      <form action="/banked/merchants/<%= @merchant.id %>/delete" method="POST">
+        <button type="submit">Delete Record</button>
+      </form>
+
+      <p><b><i>WARNING: this will also delete any associated Transactions.</i></b></p>
+    </div>
+
+
   </div>
 
 </body>

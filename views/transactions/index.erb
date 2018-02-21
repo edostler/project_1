@@ -14,98 +14,117 @@
   </div>
 
   <div class="content">
+    <div class="new_entry">
+      <p><b>Add A New Transaction:</b></p>
 
-    <p><b>Add A New Transaction:</b></p>
+      <div class="">
 
-    <form action="/banked/transactions" method="POST">
+        <form action="/banked/transactions" method="POST">
+          <div class="">
+            <label class="" for="description">Description:</label>
+            <input type="text" name="description" id="description"/>
+          </div>
+          <div class="">
+            <label class="" for="value">Value (£):</label>
+            <input type="number" step="0.01" name="value" id="value"/>
+          </div>
+          <div class="">
+            <label class="" for="spend_date">Date:</label>
+            <input type="date" name="spend_date" id="spend_date" required/>
+          </div>
+          <div class="">
+            <label class="" for="merchant-select">Merchant:</label>
+            <select name="merchant_id" id="merchant-select">
+              <% for merchant in @merchants %>
+                <option value="<%= merchant.id %>"><%= merchant.name %></option>
+              <% end %>
+              <option value="null" disabled>------</option>
+              <option value="new">NEW MERCHANT</option>
+            </select>
+          </div>
+          <div class="">
+            <label class="" for="tag-select">Tag:</label>
+            <select name="tag_id" id="tag-select">
+              <% for tag in @tags %>
+                <option value="<%= tag.id %>"><%= tag.name %></option>
+              <% end %>
+              <option value="null" disabled>------</option>
+              <option value="new">NEW TAG</option>
+            </select>
+          </div>
+          <input type="submit" value="Add Transaction">
 
-      <label for="description">Description:</label>
-      <input type="text" name="description" id="description"/>
+        </form>
 
-      <label for="value">Value: £</label>
-      <input type="number" step="0.01" name="value" id="value"/>
+      </div>
+    </div>
 
-      <label for="spend_date">Date:</label>
-      <input type="date" name="spend_date" id="spend_date" required/>
 
-      <label for="merchant-select">Merchant:</label>
-      <select name="merchant_id" id="merchant-select">
-        <% for merchant in @merchants %>
-          <option value="<%= merchant.id %>"><%= merchant.name %></option>
-        <% end %>
-        <option value="null" disabled>------</option>
-        <option value="new">NEW MERCHANT</option>
-      </select>
+    <div class="filter">
+      <p><b>Filter Transactions by Tag, Merchant, Date or Value:</b></p>
 
-      <label for="tag-select">Tag:</label>
-      <select name="tag_id" id="tag-select">
-        <% for tag in @tags %>
-          <option value="<%= tag.id %>"><%= tag.name %></option>
-        <% end %>
-        <option value="null" disabled>------</option>
-        <option value="new">NEW TAG</option>
-      </select>
+      <div class="">
+        <form action="/banked/transactions/filter_tag" method="POST">
 
-      <input type="submit" value="Add Transaction">
+            <label for="tag-select">By Tag:</label>
+            <select name="id" id="tag-select">
+              <% for tag in @tags %>
+                <option value="<%= tag.id %>"><%= tag.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Filter By Tag">
 
-    </form>
+        </form>
+      </div>
+      <div class="">
+        <form action="/banked/transactions/filter_merchant" method="POST">
 
-    <p><b>Filter Transactions by Tag, Merchant, Date or Value:</b></p>
+          <label for="merchant-select">By Merchant:</label>
+          <select name="id" id="merchant-select">
+            <% for merchant in @merchants %>
+              <option value="<%= merchant.id %>"><%= merchant.name %></option>
+            <% end %>
+          </select>
 
-    <form action="/banked/transactions/filter_tag" method="POST">
+          <input type="submit" value="Filter By Merchant">
 
-      <label for="tag-select"></label>
-      <select name="id" id="tag-select">
-        <% for tag in @tags %>
-          <option value="<%= tag.id %>"><%= tag.name %></option>
-        <% end %>
-      </select>
+        </form>
+      </div>
+      <div class="">
+        <form action="/banked/transactions/filter_date" method="POST">
 
-      <input type="submit" value="Filter By Tag">
+            <label for="">By Date:</label>
+            <label for="start_date">Starting:</label>
+            <input type="date" name="start_date" id="start_date" required/>
 
-    </form>
+            <label for="end_date">Ending:</label>
+            <input type="date" name="end_date" id="end_date" required/>
 
-    <form action="/banked/transactions/filter_merchant" method="POST">
+          <input type="submit" value="Filter By Date">
 
-      <label for="merchant-select"></label>
-      <select name="id" id="merchant-select">
-        <% for merchant in @merchants %>
-          <option value="<%= merchant.id %>"><%= merchant.name %></option>
-        <% end %>
-      </select>
+        </form>
+      </div>
 
-      <input type="submit" value="Filter By Merchant">
+      <div class="">
+        <form action="/banked/transactions/filter_value" method="POST">
 
-    </form>
+          <label for="value-select">By Value:</label>
+          <select name="operator" id="value-select">
+              <option value="less">Less Than</option>
+              <option value="greater">Greater Than</option>
+          </select>
 
-    <form action="/banked/transactions/filter_date" method="POST">
+          <label for="value">Value (£):</label>
+          <input type="number" name="value" id="value" required/>
 
-      <label for="start_date">Start Date:</label>
-      <input type="date" name="start_date" id="start_date" required/>
+          <input type="submit" value="Filter By Value">
 
-      <label for="end_date">End Date:</label>
-      <input type="date" name="end_date" id="end_date" required/>
+        </form>
+      </div>
 
-      <input type="submit" value="Filter By Date">
+      <a href="/banked/transactions">Reset Filter</a>
+    </div>
 
-    </form>
-
-    <form action="/banked/transactions/filter_value" method="POST">
-
-      <label for="value-select"></label>
-      <select name="operator" id="value-select">
-          <option value="less">Less Than</option>
-          <option value="greater">Greater Than</option>
-      </select>
-
-      <label for="value">Value: £</label>
-      <input type="number" name="value" id="value" required/>
-
-      <input type="submit" value="Filter By Value">
-
-    </form>
-
-    <a href="/banked/transactions">Reset Filter</a>
 
     <table>
       <caption>All Previous Transactions</caption>
