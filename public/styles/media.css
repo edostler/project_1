@@ -1,0 +1,55 @@
+@media all and (max-width: 595px) {
+  ul.topnav li {
+    float: none;
+  }
+  .logo {
+    visibility: hidden;
+    height: 0px;
+    margin: 0px;
+  }
+  li a {
+    padding: 4px 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .title {
+    justify-content: space-between;
+  }
+  .title img {
+    display: flex;
+    margin: 4px;
+  }
+  .filter label {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 760px) {
+  table {
+    border: 0;
+  }
+  table thead {
+    clip: rect(0 0 0 0);
+    position: absolute;
+  }
+  table tr {
+    border-bottom: 3px solid rgb(65, 65, 66);
+    display: block;
+    margin-bottom: 10px;
+  }
+  table td {
+    border-bottom: 1px solid rgb(65, 65, 66);
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+}

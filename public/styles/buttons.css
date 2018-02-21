@@ -1,0 +1,15 @@
+/* Buttons */
+a:link.reset, a:visited.reset {
+  font-size: 12px;
+  background-color: rgb(0, 83, 142);
+  color: white;
+  margin-left: 10px;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover.reset, a:active.reset {
+  color: white;
+  background-color: rgb(65, 65, 66);
+}

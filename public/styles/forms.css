@@ -1,0 +1,28 @@
+/* Forms */
+label {
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+}
+input {
+  width: 100px;
+}
+input[type="submit"] {
+  width: 150px;
+}
+select {
+  width: 105px;
+}
+form {
+  padding: 5px;
+}
+.new_entry {
+  border: 3px solid rgb(173, 222, 228);
+  padding: 10px;
+}
+.filter {
+  border: 3px solid rgb(173, 222, 228);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
