@@ -7,6 +7,8 @@ require_relative("models/merchant.rb")
 require_relative("models/tag.rb")
 require_relative("models/transaction.rb")
 
+set :environment, :production
+
 get "/banked" do
   @sum_total = Transaction.sum_values()
   @tags = Tag.all()
