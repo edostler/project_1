@@ -3,7 +3,7 @@ require_relative("../models/tag")
 require_relative("../models/transaction")
 
 get "/banked/transactions" do
-  @transactions = Transaction.all()
+  @transactions = Transaction.order()
   @merchants = Merchant.all()
   @tags = Tag.all()
   erb(:"transactions/index")
