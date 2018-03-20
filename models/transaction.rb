@@ -41,6 +41,10 @@ class Transaction
     return Merchant.new(merchant.first)
   end
 
+  # PSEUDOCODE:
+  # A fucntion for use within the Transaction class that takes in a date in SQL format (YYYY-MM-DD) and returns it in the a more readable format (DD-MM-YYY)
+  # Function takes date, separates it into 3 parts using .split on '-', reorders it in reverse using .reverse, and creates newly formatted date by bringing it back into a single string using .join with '-'.
+
   def self.format_date(date)
     date_split = date.split("-")
     date_split_reordered = date_split.reverse
