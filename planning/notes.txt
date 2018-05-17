@@ -1,0 +1,57 @@
+Examples of other apps:
+
+--Dollarbird
+Free: add past and future income and expenses to a calendar that calculates balance and assess spending by category
+Input: manual
+
+--Fudget
+Free: list-based organisation of spending, good for tracking short-term budgets and work expenses
+Paid: removes ads
+Input: manual
+
+--Goodbudget
+Free: sets a budget for each category and lets you add in transactions, updating your allowance
+Paid: unlimited categories, 5 year history and multi-device syncing
+Input: manual
+
+--Wally
+Free: input purchases and income to keep tracks via a graphical interface - location tracking to assist with auto-categorisation without the linked account
+Paid:
+Input: manual
+
+--------
+
+-BillGuard
+Free: tracks spending by type, month and location
+Paid: credit monitoring and identity theft insurance
+Input: automatic via account linking
+
+-LearnVest
+Free: tracks spending by type, set and track goals
+Paid: financial planner and advice
+Input: manual with linked account
+
+-Level Money
+Free: subtracts recurring expenses and savings from income and divides what's left to tell you how much you can spend each day, week or month
+Paid:
+Input: automatic via account linking
+
+-Mint
+Free: create budgets with multiple spending categories and warns users when nearing their allowance
+Paid:
+Input: manual with linked account
+
+-Penny
+Free: graphical interface with friendly banter about your spending habits
+Paid:
+Input: automatic via account linking
+
+-Personal Capital
+Free: tracks spending to help create models for saving
+Paid:
+Input: automatic via account linking
+
+-Wallaby
+Free: lists transactions and advises on how to make the most of credit card offers
+Paid:
+Input: automatic via account linking

@@ -1,0 +1,91 @@
+QUESTIONS
+- What user needs is your product going to answer? Can you document that?
+The product is going to make it easy for the user to add transactions with the aim of helping them not spend over their budget
+
+- Why would your users want to use this over something similar that they've seen elsewhere?
+There are plenty of free apps that do this. In order to compete our app needs to make it as simple as possible to get the most feedback
+
+- How could you make sure that your website uses interface solutions that users are familiar with?
+I will check out the market and cross reference my findings with common interface patterns
+
+- What is the user journey — how will users interact with your product, and how many steps will be necessary to complete their goals?
+Users will open the app, be greeted with a homepage that gives overview stats and helpful advice
+From here they can drill down into their manually added data to see where their spending is coming from
+They can also add new transactions to their database - this needs to be as easy as possible - this will be done by automatically adding tags and merchants to their dropdown lists if they don't already exist, making it easy for them to select the same one again next time - in addition the relationship between the merchant and the tag should be semi-intelligent and auto populate the other field by selecting the most common paired match (this is an extension piece that should be an option that can be turned off in user account settings)
+They can also view their list of tags or their list of merchants to make changes to it manually
+
+
+USER PERSONAS
+Persona 1
+-Name:
+Dave
+-Demographic:
+35 y.o.
+Engaged
+£30000pa
+-Behaviours:
+Likes to be in control of his cash
+Detail orientated
+Likes figures and stats
+-Needs and Goals:
+Wants to put away enough each month over a year to save up for his wedding
+Wants to be able to identify where he is spending his money so that hopefully he can see where there is potential to trim
+Wants to see the numbers change over time so that he can see the outcomes of his actions
+
+Persona 2
+-Name:
+Zoe
+-Demographic:
+23 y.o.
+Single
+£20000pa
+-Behaviours:
+Not very disciplined, finds it hard to save because she likes to enjoy her income
+Likes short-term goals
+Visual person, she doesn't understand figures and tables of info very easily
+-Needs and Goals:
+Wants to be able to calculate the effect of current changes so that she is able to see what that will give her in the long-term -> motivation to change
+Wants to make short-term sacrifices rather than long-term lifestyle changes to achieve her short-term goals (the next holiday or a new phone etc.)
+
+Persona 3
+-Name:
+
+-Demographic:
+
+-Behaviours:
+
+-Need and Goals:
+
+
+USER NEEDS
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
+
+As A:
+I Want To:
+So That:
